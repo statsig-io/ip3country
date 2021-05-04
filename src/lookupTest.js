@@ -1,5 +1,4 @@
 const CountryLookup = require('./CountryLookup');
-const path = require('path');
 
 async function runExhaustiveTests() {
   const lookup = new CountryLookup();
