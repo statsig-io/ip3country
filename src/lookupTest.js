@@ -2,7 +2,7 @@ const CountryLookup = require('./CountryLookup');
 const path = require('path');
 
 async function runExhaustiveTests() {
-  const lookup = new CountryLookup(path.resolve(__dirname, '../bin/ip_supalite.bin'));
+  const lookup = new CountryLookup();
   await lookup.init();
   console.dir(lookup);
 
@@ -27,7 +27,7 @@ async function runExhaustiveTests() {
 }
 
 async function runRandomTests() {
-  const lookup = new CountryLookup(path.resolve(__dirname, '../bin/ip_supalite.bin'));
+  const lookup = new CountryLookup();
   await lookup.init();
   console.dir(lookup);
 

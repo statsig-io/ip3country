@@ -1,21 +1,20 @@
 const fs = require('fs/promises');
+const path = require('path');
 
 class CountryLookup {
-  constructor(pathToBinFile) {
-    this.pathToBinFile = pathToBinFile;
+  constructor() {
   }
 
   /*
    The binary is packed as follows:
-   c1 = country code character 1
-   c2 = country code character 2
-
-   n.c1.c2: if n is < 240
-   242.n2.n3.c1.c2: if n >= 240 but < 65536. n2 being lower order byte
-   243.n2.n3.n4.c1.c2: if n >= 65536. n2 being lower order byte
+   c1.c2.c3.....**: Country code look up table, terminated by **
+   
+   n1.c: if n is < 240, c is country code index
+   242.n2.n3.c: if n >= 240 but < 65536. n2 being lower order byte
+   243.n2.n3.n4.c: if n >= 65536. n2 being lower order byte
   */   
   async init() {
-    const buffer = await fs.readFile(this.pathToBinFile);
+    const buffer = await fs.readFile(path.resolve(__dirname, '../bin/ip_supalite.bin'));
     
     this.countryCodes = [];
     this.ipRanges = [];
@@ -70,6 +69,10 @@ class CountryLookup {
   }
 
   lookupNumeric(ipNumber) {
+    if (!this.countryCodes) {
+      throw new Error('Please call init first');
+    }
+
     const index = this.binarySearch(ipNumber, 0, this.ipRanges.length - 1);    
     const cc = this.countryCodes[index];
     return (cc === '--' ? null : cc);
