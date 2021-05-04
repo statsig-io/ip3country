@@ -2,6 +2,8 @@
 
 This is a no-dependency, super small, IP to 2-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) lookup library. There are already several libraries available, but none met our requirements for binary size and speed.
 
+This project in its entirety is <450KB, compared to most alternatives out there that are north of 40MB (but they provide a lot more features).
+
 The database used in this project is compacted from IP2Location (https://lite.ip2location.com/database/ip-country). Their DB1.LITE edition is provided under CCA, with the attribution below:
 
 ---
