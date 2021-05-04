@@ -1,5 +1,5 @@
 {
-  "name": "ip-country-lookup",
+  "name": "ip3country",
   "version": "1.0.0",
   "description": "This is a no-dependency, super lite version of IP2Location LITE lookup.",
   "main": "index.js",
