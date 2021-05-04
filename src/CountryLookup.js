@@ -60,12 +60,11 @@ class CountryLookup {
       return null;
     }
 
-    const ipNumber = parseInt(components[0]) << 24 + 
-      parseInt(components[1]) << 16 + 
-      parseInt(components[2]) << 8 +
+    const ipNumber = parseInt(components[0]) * Math.pow(256, 3) + 
+      (parseInt(components[1]) << 16) + 
+      (parseInt(components[2]) << 8) +
       parseInt(components[3]);
-
-    return lookupNumeric(ipNumber);
+    return this.lookupNumeric(ipNumber);
   }
 
   lookupNumeric(ipNumber) {
