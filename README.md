@@ -18,7 +18,7 @@ This site or product includes IP2Location LITE data available from <a href="http
 
 ```js
 // Setup
-const CountryLookup = require('CountryLookup');
+const CountryLookup = require('ip3country');
 
 const map = new CountryLookup();
 await map.init();
