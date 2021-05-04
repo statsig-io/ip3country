@@ -1,8 +1,8 @@
 {
   "name": "ip3country",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a no-dependency, super lite version of IP2Location LITE lookup.",
-  "main": "index.js",
+  "main": "src/CountryLookup.js",
   "scripts": {
     "test": "node src/lookupTest.js"
   },
