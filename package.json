@@ -1,0 +1,19 @@
+{
+  "name": "ip-country-lookup",
+  "version": "1.0.0",
+  "description": "This is a no-dependency, super lite version of IP2Location LITE lookup.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/statsig-io/ip-country-lookup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/statsig-io/ip-country-lookup/issues"
+  },
+  "homepage": "https://github.com/statsig-io/ip-country-lookup#readme"
+}
