@@ -19,8 +19,18 @@ class CountryLookup {
     
     this.countryCodes = [];
     this.ipRanges = [];
+    this.countryTable = [];
 
     let index = 0;
+    while (index < buffer.length) {
+      const c1 = buffer[index++];
+      const c2 = buffer[index++];
+      this.countryTable.push('' + String.fromCharCode(c1) + String.fromCharCode(c2));
+      if (String.fromCharCode(c1) === '*' ) {
+        break;
+      }
+    }
+
     let lastEndRange = 0;
     while (index < buffer.length) {
       let count = 0;
@@ -39,10 +49,9 @@ class CountryLookup {
       }
 
       lastEndRange += count * 256;
-      const c1 = buffer[index++];
-      const c2 = buffer[index++];
+      const cc = buffer[index++];
       this.ipRanges.push(lastEndRange);
-      this.countryCodes.push('' + String.fromCharCode(c1) + String.fromCharCode(c2));
+      this.countryCodes.push(this.countryTable[cc]);
     }
   }
 
@@ -52,9 +61,9 @@ class CountryLookup {
       return null;
     }
 
-    const ipNumber = parseInt(components[0]) * Math.pow(256, 3) + 
-      parseInt(components[1]) * Math.pow(256, 2) + 
-      parseInt(components[2]) * 256 +
+    const ipNumber = parseInt(components[0]) << 24 + 
+      parseInt(components[1]) << 16 + 
+      parseInt(components[2]) << 8 +
       parseInt(components[3]);
 
     return lookupNumeric(ipNumber);
