@@ -1,5 +1,5 @@
 {
-  "name": "ip-country-lookup",
+  "name": "ip3country",
   "version": "1.0.0",
   "description": "This is a no-dependency, super lite version of IP2Location LITE lookup.",
   "main": "index.js",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/statsig-io/ip-country-lookup.git"
+    "url": "git+https://github.com/statsig-io/ip3country.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/statsig-io/ip-country-lookup/issues"
+    "url": "https://github.com/statsig-io/ip3country/issues"
   },
-  "homepage": "https://github.com/statsig-io/ip-country-lookup#readme"
+  "homepage": "https://github.com/statsig-io/ip3country#readme"
 }
