@@ -4,7 +4,7 @@ This is a no-dependency, super small, IP to 2-letter [country code](https://en.w
 
 This project in its entirety is <450KB, compared to most alternatives out there that are north of 40MB (but they provide a lot more features).
 
-The database used in this project is compacted from IP2Location (https://lite.ip2location.com/database/ip-country). Their DB1.LITE edition is provided under CCA, with the attribution below:
+The database used in this project is compacted from [IP2Location](https://lite.ip2location.com/database/ip-country). Their DB1.LITE edition is provided under CCA, with the attribution below:
 
 ---
 
@@ -32,4 +32,4 @@ console.log(map.lookupNumeric(2066563848));
 
 ## Name
 
-All variantes of "ip2country" were already taken in npm, so we decided to step it up.
+All variants of "ip2country" were already taken in npm, so we decided to step it up.
