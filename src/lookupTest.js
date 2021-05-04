@@ -43,7 +43,7 @@ async function runRandomTests() {
       const index = min + Math.floor(Math.random() * (max - min));
       verify(lookup.lookupNumeric(index), expected);
     }
-    // console.log('.');
+    console.log('.');
   }
 }
 
