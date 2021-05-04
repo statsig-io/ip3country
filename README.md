@@ -1,7 +1,9 @@
 # ip-country-lookup
-This is a no-dependency, super lite version of IP2Location LITE lookup.
+This is a no-dependency, super lite IP to 2-letter Country code Lookup.  
 
-The database is derived from IP2Location (https://lite.ip2location.com/database/ip-country).  Their DB1.LITE edition is provided under CCA, with the attribution below:
+When you pass '123.45.67.8', you get back 'KR'.
+
+The database used in this project is compacted from IP2Location (https://lite.ip2location.com/database/ip-country).  Their DB1.LITE edition is provided under CCA, with the attribution below:
 
 ---
 **NOTE**
