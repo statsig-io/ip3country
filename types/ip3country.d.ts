@@ -24,7 +24,7 @@ declare namespace ip3country {
    *
    * @param ip An IP Address in octet dot-decimal notation, e.g. "127.0.0.1".
    */
-  function lookupStr(ip: string): string;
+  function lookupStr(ip: string): string | null;
 
   /**
    * Returns a 2-digit country code for the given IP Address.  Returns `null` if
@@ -32,5 +32,5 @@ declare namespace ip3country {
    *
    * @param ip An IP Address represented as a 32-bit signed integer.
    */
-  function lookupNumeric(ip: number): string;
+  function lookupNumeric(ip: number): string | null;
 }
