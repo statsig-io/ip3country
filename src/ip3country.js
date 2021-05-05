@@ -1,9 +1,11 @@
 const fs = require('fs/promises');
+const fsSync = require('fs');
 const path = require('path');
 
-class CountryLookup {
-  constructor() {
-  }
+const ip3country = {
+  countryCodes: [],
+  ipRanges: [],
+  countryTable: [],
 
   /*
    The binary is packed as follows:
@@ -13,13 +15,27 @@ class CountryLookup {
    242.n2.n3.c: if n >= 240 but < 65536. n2 being lower order byte
    243.n2.n3.n4.c: if n >= 65536. n2 being lower order byte
   */   
-  async init() {
-    const buffer = await fs.readFile(path.resolve(__dirname, '../bin/ip_supalite.bin'));
-    
-    this.countryCodes = [];
-    this.ipRanges = [];
-    this.countryTable = [];
+  init: async function() {
+    if (this._initialized) {
+      console.warn("ip3country already initialized");
+      return;
+    }
 
+    const buffer = await fs.readFile(path.resolve(__dirname, '../bin/ip_supalite.bin'));
+    this.initWithBuffer(buffer);
+  },
+
+  initSync: function() {    
+    if (this._initialized) {
+      console.warn("ip3country already initialized");
+      return;
+    }
+
+    const buffer = fsSync.readFileSync(path.resolve(__dirname, '../bin/ip_supalite.bin'));
+    this.initWithBuffer(buffer);
+  },
+
+  initWithBuffer: function(buffer) {
     let index = 0;
     while (index < buffer.length) {
       const c1 = buffer[index++];
@@ -52,9 +68,11 @@ class CountryLookup {
       this.ipRanges.push(lastEndRange);
       this.countryCodes.push(this.countryTable[cc]);
     }
-  }
 
-  lookupStr(ipaddrstr) {
+    this._initialized = true;
+  },
+
+  lookupStr: function(ipaddrstr) {
     const components = ipaddrstr.split('.');
     if (components.length !== 4) {
       return null;
@@ -65,9 +83,9 @@ class CountryLookup {
       (parseInt(components[2]) << 8) +
       parseInt(components[3]);
     return this.lookupNumeric(ipNumber);
-  }
+  },
 
-  lookupNumeric(ipNumber) {
+  lookupNumeric: function(ipNumber) {
     if (!this.countryCodes) {
       throw new Error('Please call init first');
     }
@@ -75,9 +93,9 @@ class CountryLookup {
     const index = this.binarySearch(ipNumber, 0, this.ipRanges.length - 1);    
     const cc = this.countryCodes[index];
     return (cc === '--' ? null : cc);
-  }
+  },
 
-  binarySearch(value, min, max) {
+  binarySearch: function(value, min, max) {
     if (max === min) {
       return min;
     }
@@ -91,4 +109,5 @@ class CountryLookup {
   }
 }
 
-module.exports = CountryLookup;
+
+module.exports = ip3country;
