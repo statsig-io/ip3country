@@ -98,16 +98,16 @@ const ip3country = {
   },
 
   binarySearch: function(value, min, max) {
-    if (max === min) {
-      return min;
+    while (min < max) {
+      const mid = Math.floor((min + max) / 2);
+      if (this.ipRanges[mid] <= value) {
+        min = mid + 1;
+      } else {
+        max = mid;
+      }
     }
 
-    const mid = Math.floor((min + max) / 2);
-    if (this.ipRanges[mid] <= value) {
-      return this.binarySearch(value, mid + 1, max);
-    } else {
-      return this.binarySearch(value, min, mid);
-    }
+    return min;
   }
 }
 

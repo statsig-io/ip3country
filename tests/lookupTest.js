@@ -28,20 +28,21 @@ function runRandomTests() {
   ip3country.initSync();
   console.dir(ip3country);
 
+  let failed = false;
   for (var ii = 1; ii < ip3country.ipRanges.length; ii++) {
     const max = ip3country.ipRanges[ii];
     const min = ip3country.ipRanges[ii - 1];
     const expected = ip3country.countryCodes[ii];
 
-    let failed = false;
-    verify(ip3country.lookupNumeric(min), expected);
-    verify(ip3country.lookupNumeric(max - 1), expected);
+    failed |= !verify(ip3country.lookupNumeric(min), expected);
+    failed |= !verify(ip3country.lookupNumeric(max - 1), expected);
     for (var jj = 0; jj < 100; jj++) {
       const index = min + Math.floor(Math.random() * (max - min));
-      verify(ip3country.lookupNumeric(index), expected);
+      failed |= !verify(ip3country.lookupNumeric(index), expected);
     }
-    console.log('.');
   }
+
+  console.log(failed ? "---Random tests failed---" : "---Random tests passed---")
 }
 
 function verify(result, expected, index) {
