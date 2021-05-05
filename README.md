@@ -30,6 +30,14 @@ map.lookupStr('123.45.67.8'); // 'KR'.
 console.log(map.lookupNumeric(2066563848));
 ```
 
+## Accuracy
+
+`ip3location`'s accuracy is dependent on IP2Location LITE's accuracy. In our experience, for country lookups, it is accurate enough for most applications.
+
+IP2Location publishes accuracy reports here: https://www.ip2location.com/data-accuracy
+
+There's also this third party report available: https://www.cl.cam.ac.uk/~nz247/publications/JSAC2011-Geolocation.pdf
+
 ## Name
 
 All variants of "ip2country" were already taken in npm, so we decided to step it up.
