@@ -92,22 +92,25 @@ const ip3country = {
       throw new Error('Please call init first');
     }
 
-    const index = this.binarySearch(ipNumber, 0, this.ipRanges.length - 1);    
+    const index = this.binarySearch(ipNumber);    
     const cc = this.countryCodes[index];
     return (cc === '--' ? null : cc);
   },
 
-  binarySearch: function(value, min, max) {
-    if (max === min) {
-      return min;
+  binarySearch: function(value) {
+    let min = 0;
+    let max = this.ipRanges.length - 1;
+
+    while (min < max) {
+      const mid = Math.floor((min + max) / 2);
+      if (this.ipRanges[mid] <= value) {
+        min = mid + 1;
+      } else {
+        max = mid;
+      }
     }
 
-    const mid = Math.floor((min + max) / 2);
-    if (this.ipRanges[mid] <= value) {
-      return this.binarySearch(value, mid + 1, max);
-    } else {
-      return this.binarySearch(value, min, mid);
-    }
+    return min;
   }
 }
 
