@@ -1,6 +1,6 @@
 # ip3country
 
-This is a no-dependency, super small, IP to 2-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) lookup library. There are already several libraries available, but none met our requirements for binary size and speed.
+This is a zero-dependency, super small, IP address to 2-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) lookup library. There are already several libraries available, but none as small or as fast as this one.
 
 This project in its entirety is <450KB, compared to most alternatives out there that are north of 40MB (but they provide a lot more features).
 
@@ -18,9 +18,9 @@ This site or product includes IP2Location LITE data available from <a href="http
 
 ```js
 // Setup
-const CountryLookup = require('ip3country');
+const IP3Country = require('ip3country');
 
-const map = new CountryLookup();
+const map = new IP3Country();
 await map.init();
 
 // Lookup using ip4 str
@@ -32,7 +32,7 @@ console.log(map.lookupNumeric(2066563848));
 
 ## Accuracy
 
-`ip3location`'s accuracy is dependent on IP2Location LITE's accuracy. In our experience, for country lookups, it is accurate enough for most applications.
+`ip3country`'s accuracy is dependent on IP2Location LITE's accuracy. In our experience, for country lookups, it is accurate enough for most applications.
 
 IP2Location publishes accuracy reports here: https://www.ip2location.com/data-accuracy
 
