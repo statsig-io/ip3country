@@ -1,6 +1,6 @@
-const fs = require('fs/promises');
-const fsSync = require('fs');
-const path = require('path');
+const fs = require("fs/promises");
+const fsSync = require("fs");
+const path = require("path");
 
 const ip3country = {
   countryCodes: [],
@@ -14,8 +14,8 @@ const ip3country = {
    n1.c: if n is < 240, c is country code index
    242.n2.n3.c: if n >= 240 but < 65536. n2 being lower order byte
    243.n2.n3.n4.c: if n >= 65536. n2 being lower order byte
-  */   
-  init: async function() {
+  */
+  init: async function () {
     if (this._initCalled) {
       console.warn("You can call init just once");
       return;
@@ -23,11 +23,13 @@ const ip3country = {
 
     this._initCalled = true;
 
-    const buffer = await fs.readFile(path.resolve(__dirname, '../bin/ip_supalite.bin'));
+    const buffer = await fs.readFile(
+      path.resolve(__dirname, "../bin/ip_supalite.bin")
+    );
     this.initWithBuffer(buffer);
   },
 
-  initSync: function() {    
+  initSync: function () {
     if (this._initCalled) {
       console.warn("You can call init just once");
       return;
@@ -35,17 +37,21 @@ const ip3country = {
 
     this._initCalled = true;
 
-    const buffer = fsSync.readFileSync(path.resolve(__dirname, '../bin/ip_supalite.bin'));
+    const buffer = fsSync.readFileSync(
+      path.resolve(__dirname, "../bin/ip_supalite.bin")
+    );
     this.initWithBuffer(buffer);
   },
 
-  initWithBuffer: function(buffer) {
+  initWithBuffer: function (buffer) {
     let index = 0;
     while (index < buffer.length) {
       const c1 = buffer[index++];
       const c2 = buffer[index++];
-      this.countryTable.push('' + String.fromCharCode(c1) + String.fromCharCode(c2));
-      if (String.fromCharCode(c1) === '*' ) {
+      this.countryTable.push(
+        "" + String.fromCharCode(c1) + String.fromCharCode(c2)
+      );
+      if (String.fromCharCode(c1) === "*") {
         break;
       }
     }
@@ -59,12 +65,12 @@ const ip3country = {
       } else if (n1 == 242) {
         const n2 = buffer[index++];
         const n3 = buffer[index++];
-        count = n2 | n3 << 8;
+        count = n2 | (n3 << 8);
       } else if (n1 == 243) {
         const n2 = buffer[index++];
         const n3 = buffer[index++];
         const n4 = buffer[index++];
-        count = n2 | n3 << 8 | n4 << 16;
+        count = n2 | (n3 << 8) | (n4 << 16);
       }
 
       lastEndRange += count * 256;
@@ -74,30 +80,31 @@ const ip3country = {
     }
   },
 
-  lookupStr: function(ipaddrstr) {
-    const components = ipaddrstr.split('.');
+  lookupStr: function (ipaddrstr) {
+    const components = ipaddrstr.split(".");
     if (components.length !== 4) {
       return null;
     }
 
-    const ipNumber = parseInt(components[0]) * Math.pow(256, 3) + 
-      (parseInt(components[1]) << 16) + 
+    const ipNumber =
+      parseInt(components[0]) * Math.pow(256, 3) +
+      (parseInt(components[1]) << 16) +
       (parseInt(components[2]) << 8) +
       parseInt(components[3]);
     return this.lookupNumeric(ipNumber);
   },
 
-  lookupNumeric: function(ipNumber) {
+  lookupNumeric: function (ipNumber) {
     if (!this.countryCodes) {
-      throw new Error('Please call init first');
+      throw new Error("Please call init first");
     }
 
-    const index = this.binarySearch(ipNumber);    
+    const index = this.binarySearch(ipNumber);
     const cc = this.countryCodes[index];
-    return (cc === '--' ? null : cc);
+    return cc === "--" ? null : cc;
   },
 
-  binarySearch: function(value) {
+  binarySearch: function (value) {
     let min = 0;
     let max = this.ipRanges.length - 1;
 
@@ -111,8 +118,7 @@ const ip3country = {
     }
 
     return min;
-  }
-}
-
+  },
+};
 
 module.exports = ip3country;
