@@ -16,20 +16,24 @@ const ip3country = {
    243.n2.n3.n4.c: if n >= 65536. n2 being lower order byte
   */   
   init: async function() {
-    if (this._initialized) {
-      console.warn("ip3country already initialized");
+    if (this._initCalled) {
+      console.warn("You can call init just once");
       return;
     }
+
+    this._initCalled = true;
 
     const buffer = await fs.readFile(path.resolve(__dirname, '../bin/ip_supalite.bin'));
     this.initWithBuffer(buffer);
   },
 
   initSync: function() {    
-    if (this._initialized) {
-      console.warn("ip3country already initialized");
+    if (this._initCalled) {
+      console.warn("You can call init just once");
       return;
     }
+
+    this._initCalled = true;
 
     const buffer = fsSync.readFileSync(path.resolve(__dirname, '../bin/ip_supalite.bin'));
     this.initWithBuffer(buffer);
@@ -68,8 +72,6 @@ const ip3country = {
       this.ipRanges.push(lastEndRange);
       this.countryCodes.push(this.countryTable[cc]);
     }
-
-    this._initialized = true;
   },
 
   lookupStr: function(ipaddrstr) {
@@ -104,7 +106,7 @@ const ip3country = {
     if (this.ipRanges[mid] <= value) {
       return this.binarySearch(value, mid + 1, max);
     } else {
-      return this.binarySearch(value, min, mid)
+      return this.binarySearch(value, min, mid);
     }
   }
 }
