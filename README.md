@@ -16,6 +16,10 @@ This site or product includes IP2Location LITE data available from <a href="http
 
 ## Usage
 
+```bash
+$ npm install ip3country
+```
+
 ```js
 // Setup
 const ip3country = require("ip3country");
