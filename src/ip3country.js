@@ -109,7 +109,7 @@ const ip3country = {
     let max = this.ipRanges.length - 1;
 
     while (min < max) {
-      const mid = Math.floor((min + max) / 2);
+      const mid = (min + max) >>> 1;
       if (this.ipRanges[mid] <= value) {
         min = mid + 1;
       } else {
