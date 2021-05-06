@@ -30,7 +30,7 @@ declare namespace ip3country {
    * Returns a 2-digit country code for the given IP Address.  Returns `null` if
    * there is no match.
    *
-   * @param ip An IP Address represented as a 32-bit signed integer.
+   * @param ip An IP Address represented as a 32-bit unsigned integer.
    */
   function lookupNumeric(ip: number): string | null;
 }
