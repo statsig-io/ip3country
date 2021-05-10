@@ -1,4 +1,4 @@
-const ip3country = require('../src/ip3country');
+const ip3country = require("../src/ip3country");
 
 async function runExhaustiveTests() {
   await ip3country.init();
@@ -11,7 +11,7 @@ async function runExhaustiveTests() {
 
     let failed = false;
     for (var jj = min; jj < max; jj++) {
-      const result = ip3country.lookupNumeric(jj);      
+      const result = ip3country.lookupNumeric(jj);
       failed = verify(result, expected, jj);
       if (failed) {
         break;
@@ -25,7 +25,7 @@ async function runExhaustiveTests() {
 }
 
 function runRandomTests() {
-  ip3country.initSync();
+  ip3country.init();
   console.dir(ip3country);
 
   let failed = false;
@@ -42,12 +42,14 @@ function runRandomTests() {
     }
   }
 
-  console.log(failed ? "---Random tests failed---" : "---Random tests passed---")
+  console.log(
+    failed ? "---Random tests failed---" : "---Random tests passed---"
+  );
 }
 
 function verify(result, expected, index) {
   if (result === null) {
-    result = '--';
+    result = "--";
   }
   if (expected === result) {
     return true;
