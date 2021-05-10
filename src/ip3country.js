@@ -24,7 +24,7 @@ const ip3country = {
     this._initCalled = true;
 
     const buffer = await fs.readFile(
-      path.resolve(__dirname, "../bin/ip_supalite.bin")
+      path.resolve("../bin/ip_supalite.bin")
     );
     this.initWithBuffer(buffer);
   },
