@@ -1,6 +1,6 @@
 # ip3country
 
-This is a zero-dependency, super small, IP address to 2-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) lookup library. There are already several libraries available, but none met our requirements for binary size and speed.  We use ip3country to evaluate location-based conditions on Feature Gates (Feature Flags).  This enables country-level rollouts or A/B tests for new features.
+This is a zero-dependency, super small, IP address to 2-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) lookup library. There are already several libraries available, but none met our requirements for binary size and speed.
 
 This project in its entirety is <500KB, compared to most alternatives out there that are north of 40MB (but might provide more than just countries).
 
@@ -44,3 +44,7 @@ There's also this third party report available: https://www.cl.cam.ac.uk/~nz247/
 ## Name
 
 All variants of "ip2country" were already taken in npm, so we decided to step it up.
+
+## Motivation
+
+At [Statsig](https://www.statsig.com), we needed a library to evaluate location-based conditions on Feature Gates (Feature Flags).  We use ip3country to power country-level rollouts or A/B tests for new features.
