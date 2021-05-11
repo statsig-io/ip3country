@@ -3,6 +3,10 @@
   "version": "3.0.0",
   "description": "This is a no-dependency, super lite version of IP2Location LITE lookup.",
   "main": "src/ip3country.js",
+  "files": [
+    "/src",
+    "/types"
+  ],
   "types": "types/ip3country.d.ts",
   "scripts": {
     "test": "node tests/lookupTest.js"
