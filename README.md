@@ -44,3 +44,7 @@ There's also this third party report available: https://www.cl.cam.ac.uk/~nz247/
 ## Name
 
 All variants of "ip2country" were already taken in npm, so we decided to step it up.
+
+## Motivation
+
+At [Statsig](https://www.statsig.com), we needed a library to evaluate location-based conditions on Feature Gates (Feature Flags).  We use ip3country to power country-level rollouts or A/B tests for new features.
