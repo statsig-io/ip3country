@@ -2,7 +2,7 @@
 
 This is a zero-dependency, super small, IP address to 2-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) lookup library. There are already several libraries available, but none met our requirements for binary size and speed.
 
-This project in its entirety is <450KB, compared to most alternatives out there that are north of 40MB (but they provide a lot more features).
+This project in its entirety is <500KB, compared to most alternatives out there that are north of 40MB (but might provide more than just countries).
 
 The database used in this project is compacted from [IP2Location](https://lite.ip2location.com/database/ip-country). Their DB1.LITE edition is provided under CCA, with the attribution below:
 
@@ -24,10 +24,7 @@ $ npm install ip3country
 // Setup
 const ip3country = require("ip3country");
 
-await ip3country.init();
-
-// Or if you want sync
-// ip3country.initSync();
+ip3country.init();
 
 // Lookup using ip4 str
 ip3country.lookupStr("123.45.67.8"); // 'KR'.

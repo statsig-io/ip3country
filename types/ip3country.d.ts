@@ -2,20 +2,12 @@ export = ip3country;
 
 declare namespace ip3country {
   /**
-   * Initializes ip3country asynchronously.
-   * Must be called once before any lookups.
-   */
-  function init(): Promise<void>;
-
-  /**
-   * Initializes ip3country synchronously.
-   * Must be called once before any lookups.
+   * Initializes ip3country. Must be called once before any lookups.
    *
-   * `init` is preferred. This synchronous version is provided as an utility in
-   * cases where you can't run asynchronous code. It is not simply a synchronous
-   * wrapper--it replaces all async calls with sync calls.
+   * This is relatively CPU intensive so call it during application startup if
+   * possible.
    */
-  function initSync(): void;
+  function init(): void;
 
   /**
    * Returns a 2-digit country code for the given IP Address.  Returns `null` if
