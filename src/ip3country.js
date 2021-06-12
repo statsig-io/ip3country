@@ -5,7 +5,7 @@ const ip3country = {
 
   init: function () {
     if (this._initCalled) {
-      console.warn("You can call init just once");
+      console.warn("ip3country::init> You can call init just once");
       return;
     }
 
@@ -66,7 +66,7 @@ const ip3country = {
 
   lookupNumeric: function (ipNumber) {
     if (!this.countryCodes) {
-      throw new Error("Please call init first");
+      throw new Error("ip3country::lookupNumeric> Please call init first");
     }
 
     const index = this.binarySearch(ipNumber);
