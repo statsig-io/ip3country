@@ -5,7 +5,6 @@ const ip3country = {
 
   init: function () {
     if (this._initCalled) {
-      console.warn("ip3country::init> You can call init just once");
       return;
     }
 
