@@ -1,3 +1,5 @@
+[![install size](https://packagephobia.com/badge?p=ip3country)](https://packagephobia.com/result?p=ip3country)
+
 # ip3country
 
 This is a zero-dependency, super small, IP address to 2-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) lookup library. There are already several libraries available, but none met our requirements for binary size and speed.
