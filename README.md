@@ -4,7 +4,7 @@
 
 This is a zero-dependency, super small, IP address to 2-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) lookup library. There are already several libraries available, but none met our requirements for binary size and speed.
 
-This project in its entirety is <500KB, compared to most alternatives out there that are north of 40MB (but might provide more than just countries).
+This project in its entirety is <300KB, compared to most alternatives out there that are north of 40MB (but might provide more than just countries).
 
 The database used in this project is compacted from [IP2Location](https://lite.ip2location.com/database/ip-country). Their DB1.LITE edition is provided under CCA, with the attribution below:
 
@@ -42,6 +42,12 @@ console.log(ip3country.lookupNumeric(2066563848));
 IP2Location publishes accuracy reports here: https://www.ip2location.com/data-accuracy
 
 There's also this third party report available: https://www.cl.cam.ac.uk/~nz247/publications/JSAC2011-Geolocation.pdf
+
+## Binary data
+
+To make this library easy to consume, we're using [btoj](https://github.com/statsig-io/btoj) to transform the necessary binary data into a js module that can be imported like any other module. You won't need to list `ip3country` as an external in your build process.
+
+We're currently using brotli compression via [NodeJS's `zlib` library](https://nodejs.org/api/zlib.html#zlib_zlib_brotlicompresssync_buffer_options), which won't work in Browser environments. If you want `ip3country` on a browser, check version `3.0.0` (and feel free to publish `ip3country-browser`).
 
 ## Name
 
