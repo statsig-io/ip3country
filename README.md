@@ -1,4 +1,4 @@
-[![install size](https://packagephobia.com/badge?p=ip3country)](https://packagephobia.com/result?p=ip3country)
+[![npm version](https://badge.fury.io/js/ip3country.svg)](https://badge.fury.io/js/ip3country) [![install size](https://packagephobia.com/badge?p=ip3country)](https://packagephobia.com/result?p=ip3country) [![tests](https://github.com/statsig-io/ip3country/actions/workflows/tests.yml/badge.svg)](https://github.com/statsig-io/ip3country/actions/workflows/tests.yml)
 
 # ip3country
 
@@ -49,4 +49,4 @@ All variants of "ip2country" were already taken in npm, so we decided to step it
 
 ## Motivation
 
-At [Statsig](https://www.statsig.com), we needed a library to evaluate location-based conditions on Feature Gates (Feature Flags).  We use ip3country to power country-level rollouts or A/B tests for new features.
+At [Statsig](https://www.statsig.com), we needed a library to evaluate location-based conditions on Feature Gates (Feature Flags). We use ip3country to power country-level rollouts or A/B tests for new features.
