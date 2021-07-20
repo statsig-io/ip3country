@@ -1,4 +1,4 @@
-[![install size](https://packagephobia.com/badge?p=ip3country)](https://packagephobia.com/result?p=ip3country)
+[![npm version](https://badge.fury.io/js/ip3country.svg)](https://badge.fury.io/js/ip3country) [![install size](https://packagephobia.com/badge?p=ip3country)](https://packagephobia.com/result?p=ip3country) [![tests](https://github.com/statsig-io/ip3country/actions/workflows/tests.yml/badge.svg)](https://github.com/statsig-io/ip3country/actions/workflows/tests.yml)
 
 # ip3country
 
