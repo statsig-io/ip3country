@@ -6,6 +6,8 @@ This is a zero-dependency, super small, IP address to 2-letter [country code](ht
 
 This project in its entirety is <300KB, compared to most alternatives out there that are north of 40MB (but might provide more than just countries).
 
+(Other languages: Python: https://github.com/statsig-io/ip3country-py, Go: https://github.com/statsig-io/ip3country-go, Ruby: https://github.com/statsig-io/ip3country-ruby, Kotlin: https://github.com/statsig-io/ip3country-kotlin, C#/.Net: https://github.com/statsig-io/ip3country-dotnet)
+
 The database used in this project is compacted from [IP2Location](https://lite.ip2location.com/database/ip-country). Their DB1.LITE edition is provided under CCA, with the attribution below:
 
 ---
