@@ -124,5 +124,5 @@ function verify(result, expected, index) {
 }
 
 runLookupTests();
-// runRandomTests();
+runRandomTests();
 // runExhaustiveTests();
